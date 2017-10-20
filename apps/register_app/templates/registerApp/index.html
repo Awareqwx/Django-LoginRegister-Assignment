@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Register</title>
+        {% load static %}
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="{% static 'registerApp/js/script.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'registerApp/css/style.css' %}">
+    </head>
+    <body>
+        <h2>Registration</h2>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <form action="register/" method="post">
+            {% csrf_token %}
+            <label for="firstname">First Name: <input type="text" name="firstname"></label>
+            <label for="lastname">Last Name: <input type="text" name="lastname"></label>
+            <label for="email">Email: <input type="text" name="email"></label>
+            <label for="password">Password: <input type="password" name="password" id="pw"></label>
+            <h5 id="pwnomatch" class="error" style="display: none">Passwords do not match!</h5>
+            <label for="pwconfirm">Confirm: <input type="password" name="pwconfirm" id="pwc"></label>
+            <input type="submit" value="Register" id="regbutton">
+        </form>
+        <h2>Login</h2>
+        <form action="login/" method="post">
+            {% csrf_token %}
+            <label for="email">Email: <input type="text" name="email"></label>
+            <label for="password">Password: <input type="password" name="password"></label>
+            <input type="submit" value="Login">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Success!</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'registerApp/css/style.css' %}">
+    </head>
+    <body>
+        <h1>Success! Welcome, {{ name }}!</h1>
+        {% if loggedin %}
+        <h4 id="success">Successfully logged in!</h4>
+        {% else %}
+        <h4 id="success">Successfully registered!</h4>
+        {% endif %}
+    </body>
+</html>
